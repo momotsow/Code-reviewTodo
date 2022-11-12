@@ -5,7 +5,7 @@ const userTask = document.querySelector('.user-task');
 const clearAllCompleted = document.querySelector('.clearAll');
 export let todos = JSON.parse(localStorage.getItem('task')) || [];//eslint-disable-line
 let MOOD = 'CREATE';
-let tmp;
+let todo;
 class Task {
   constructor(userTask) {
     this.id = todos.length + 1;
@@ -41,7 +41,7 @@ const addTask = () => {
     displayTask(todos);
     userTask.value = '';
   } else {
-    todos[tmp].task = userTask.value;
+    todos[todo].task = userTask.value;
     localStorage.setItem('task', JSON.stringify(todos));
     displayTask(todos);
     userTask.value = '';
@@ -85,7 +85,7 @@ taskSection.addEventListener('click', (e) => {
     userTask.focus();
     userTask.value = e.target.innerHTML;
     MOOD = 'UPDATE';
-    tmp = e.target.id;
+    todo = e.target.id;
   }
 });
 
